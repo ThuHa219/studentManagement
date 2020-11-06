@@ -31,6 +31,7 @@ public class StudentServiceImpl implements StudentService {
         user.setPassword(passwordEncoder.encode(registration.getPassword()));
         user.setAuthorities(new HashSet<>(Arrays.asList("USER")));
         user.setUsername(registration.getStudentUsername());
+        user.setEnabled(true);
         return repository.save(user);
     }
 	
