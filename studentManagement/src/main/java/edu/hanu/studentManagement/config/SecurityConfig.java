@@ -10,21 +10,20 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 
 import edu.hanu.studentManagement.service.UserDetailService;
 
-@Component
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+	
 	@Autowired
 	private UserDetailService studentDetailService;
-
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider());
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
@@ -55,7 +54,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //            .logoutSuccessUrl("/login?logout")
 //            .permitAll();
 		
-		http.authorizeRequests()
+		http
+			.csrf().disable()
+			.authorizeRequests()
 			.antMatchers(
 	                "/js/**",
 	                "/css/**",
@@ -63,29 +64,45 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                "/fonts/**",
 	                "/vendor/**",
 	                "/register",
-	                "/login",
-	                "/").permitAll()
+	                "/login").permitAll()
+			// here goes the path that you want to secure
+			.antMatchers("/api/**").hasAuthority("USER")
+			/////
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
-			.loginPage("/login")
-			.usernameParameter("username")
-			.passwordParameter("password")
-			.defaultSuccessUrl("/welcome")
-			.failureUrl("/login?error=true");
+				.loginPage("/login")
+				.permitAll()
+				.usernameParameter("username")
+				.passwordParameter("password")
+				.defaultSuccessUrl("/welcome")
+				.failureUrl("/login?error=true")
+			.and()
+			.logout()
+	            .logoutUrl("/logout")
+	            .logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"))
+	            .clearAuthentication(true)
+	            .invalidateHttpSession(true)
+	            .deleteCookies("JSESSIONID")
+	            .logoutSuccessUrl("/login");
+		
 	}
 
-	@Bean
-	public static PasswordEncoder passwordEncoder() {
-		return new BCryptPasswordEncoder();
+//	@Bean
+//	public static PasswordEncoder passwordEncoder() {
+//		return new BCryptPasswordEncoder(10);
+//	}
+	
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+		auth.authenticationProvider(authenticationProvider());
 	}
 	
 	@Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setHideUserNotFoundExceptions(false);
         auth.setUserDetailsService(studentDetailService);
-        auth.setPasswordEncoder(passwordEncoder());
+        auth.setPasswordEncoder(passwordEncoder);
         return auth;
     }
 }
