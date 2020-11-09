@@ -1,0 +1,98 @@
+
+<!doctype html>
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js " lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Basic -->
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- Mobile Meta -->
+<meta name="viewport"
+	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<!-- Site Meta -->
+<title>HANU</title>
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Site Icons -->
+<link rel="shortcut icon" href="images/Hanu_logo.jpg"
+	type="image/x-icon" />
+<link rel="apple-touch-icon" href="images/Hanu_logo.jpg">
+
+<!-- Google Fonts -->
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700,900"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Droid+Serif:400,400i,700,700i"
+	rel="stylesheet">
+
+<!-- Custom & Default Styles -->
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="css/carousel.css">
+<link rel="stylesheet" href="css/animate.css">
+<link rel="stylesheet" href="css/home.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/createNew.css">
+</head>
+<body>
+	<header th:replace="homepage :: header"> </header>
+	<div class="inner contact">
+		<!-- Form Area -->
+		<div class="contact-form">
+			<!-- Form -->
+			<form id="contact-us" th:action="@{/news}" th:object="${news}" method="POST">
+				<!-- Left Inputs -->
+				<div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
+					<!-- Name -->
+					<input type="text" name="name" id="name" required="required"
+						class="form" placeholder="Title" th:field="*{title}"/>
+					<!-- Email -->
+					<!-- input type="email" name="mail" id="mail" required="required"
+						class="form" placeholder="Email" /> -->
+					<!-- Subject -->
+					<input type="text" name="subject" id="subject" required="required"
+						class="form" placeholder="Subject" th:field="*{subject}" />
+				</div>
+				<!-- End Left Inputs -->
+				<!-- Right Inputs -->
+				<div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
+					<!-- Message -->
+					<textarea name="message" id="message" class="form textarea"
+						placeholder="New" th:field="*{content}"></textarea>
+				</div>
+				<!-- End Right Inputs -->
+				<!-- Bottom Submit -->
+				<div class="relative fullwidth col-xs-12">
+					<!-- Send Button -->
+					<button type="submit" id="submit" name="submit"
+						class="form-btn semibold">Send New</button>
+				</div>
+				<!-- End Bottom Submit -->
+				<!-- Clear -->
+				<div class="clear"></div>
+			</form>
+		</div>
+		<!-- End Contact Form Area -->
+	</div>
+	<footer th:include="homepage :: footer"></footer>
+	
+		<!-- jQuery Files -->
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+		crossorigin="anonymous"></script>
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="js/animate.js"></script>
+	<script src="js/custom.js"></script>
+</body>
+<!-- End Inner -->
+</html>

@@ -27,33 +27,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-//		http.authorizeRequests()
-//			.antMatchers("/teacher").hasRole("TEACHER")
-//			.antMatchers("/user").hasAnyRole("TEACHER", "USER")
-//			.antMatchers("/", "/login").permitAll().and().formLogin().loginPage("/login");
-		
-//		http.authorizeRequests().antMatchers(
-//                "/js/**",
-//                "/css/**",
-//                "/images/**",
-//                "/fonts/**",
-//                "/vendor/**", "/register").permitAll()
-//			.and()
-//            .formLogin()
-//            .loginPage("/login")
-//            .usernameParameter("username")
-//            .passwordParameter("password")
-//            .defaultSuccessUrl("/welcome")
-//            .failureUrl("/login?error")
-//            .permitAll()
-//            .and()
-//            .logout()
-//            .invalidateHttpSession(true)
-//            .clearAuthentication(true)
-//            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-//            .logoutSuccessUrl("/login?logout")
-//            .permitAll();
-		
 		http
 			.csrf().disable()
 			.authorizeRequests()
@@ -64,7 +37,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                "/fonts/**",
 	                "/vendor/**",
 	                "/register",
-	                "/login").permitAll()
+	                "/login", "/").permitAll()
 			// here goes the path that you want to secure
 			.antMatchers("/api/**").hasAuthority("USER")
 			/////
@@ -75,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.usernameParameter("username")
 				.passwordParameter("password")
-				.defaultSuccessUrl("/welcome")
+				.defaultSuccessUrl("/home")
 				.failureUrl("/login?error=true")
 			.and()
 			.logout()
@@ -87,19 +60,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	            .logoutSuccessUrl("/login");
 		
 	}
-
-//	@Bean
-//	public static PasswordEncoder passwordEncoder() {
-//		return new BCryptPasswordEncoder(10);
-//	}
 	
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authenticationProvider());
+		auth.authenticationProvider(daoAuthenticationProvider());
 	}
 	
 	@Bean
-    public DaoAuthenticationProvider authenticationProvider() {
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
         auth.setUserDetailsService(studentDetailService);
         auth.setPasswordEncoder(passwordEncoder);

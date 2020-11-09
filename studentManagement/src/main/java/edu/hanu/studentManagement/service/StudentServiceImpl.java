@@ -35,6 +35,7 @@ public class StudentServiceImpl implements StudentService {
         return repository.save(user);
     }
 	
+	@Override
 	public Optional<Student> findById(String id) {
 		return repository.findById(id);
 	}

@@ -19,8 +19,8 @@ public class HomeController {
         return "login";
 	}
 	
-	@GetMapping("/welcome")
+	@GetMapping("/home")
 	public String user(Model model) {
-		return "welcome";
+		return "homepage";
 	}
 }

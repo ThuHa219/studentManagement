@@ -8,12 +8,11 @@ import javax.persistence.DiscriminatorType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 
 @Entity(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -27,6 +26,10 @@ public class User {
 	@ElementCollection(fetch = FetchType.EAGER)
 	@JoinTable(name = "authorities")
 	private Set<String> authorities;
+	@OneToMany(mappedBy = "users")
+	private Set<New> news;
+	@OneToMany(mappedBy = "users")
+	private Set<Comment> comments;
 
 	public User() {
 		// do nothing
@@ -73,7 +76,7 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", authorities=" + authorities
-				+ "]";
+		return "User [username=" + username + ", password=" + password + ", enabled=" + enabled + ", authorities="
+				+ authorities + "]";
 	}
 }
