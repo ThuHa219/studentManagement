@@ -48,15 +48,15 @@
 		<!-- Form Area -->
 		<div class="contact-form">
 			<!-- Form -->
-			<form id="contact-us" th:action="@{/news}" th:object="${news}" method="POST">
+			<form id="contact-us" th:action="@{/createNew}" th:object="${news}" method="POST">
 				<!-- Left Inputs -->
 				<div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
 					<!-- Name -->
 					<input type="text" name="name" id="name" required="required"
 						class="form" placeholder="Title" th:field="*{title}"/>
 					<!-- Email -->
-					<!-- input type="email" name="mail" id="mail" required="required"
-						class="form" placeholder="Email" /> -->
+					 <input type="text" name="summary" id="summary" required="required"
+						class="form" placeholder="Summary" th:field="*{summary}"/>
 					<!-- Subject -->
 					<input type="text" name="subject" id="subject" required="required"
 						class="form" placeholder="Subject" th:field="*{subject}" />

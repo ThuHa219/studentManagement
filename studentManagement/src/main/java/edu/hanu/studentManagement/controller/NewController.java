@@ -1,30 +1,40 @@
 package edu.hanu.studentManagement.controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Date;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import edu.hanu.studentManagement.model.New;
+import edu.hanu.studentManagement.service.CommentService;
 import edu.hanu.studentManagement.service.NewService;
+import edu.hanu.studentManagement.service.UserService;
 
-@Controller("/news")
-public class NewController implements org.springframework.web.servlet.mvc.Controller{
+@Controller
+public class NewController {
 	
 	@Autowired
 	NewService newService;
+	@Autowired
+	UserService userService;
 	
-	@GetMapping("/createNew")
+	@GetMapping("/news")
 	public String showCreateNew(Model model) {
 		return "createNew";
+	}
+	
+	@GetMapping("/newSingle/{id}")
+	public String showNew(@PathVariable("id") int id, Model model) {
+		model.addAttribute("n", newService.findById(id));
+		return "blog-single";
 	}
 	
 	@ModelAttribute("news")
@@ -32,17 +42,12 @@ public class NewController implements org.springframework.web.servlet.mvc.Contro
 		return new New();
 	}
 	
-	@PostMapping
-    public String registerUserAccount(@ModelAttribute("news") @Valid New news,
-        BindingResult result) {
+	@RequestMapping(method = RequestMethod.POST, path = {"/createNew"})
+    public String registerUserAccount(@ModelAttribute("news") @Valid New news) {
+		news.setUsers(userService.getUser());
+		news.setDate(new Date(System.currentTimeMillis()));
 		System.out.println(news.toString());
         newService.save(news);
-        return "redirect:/createNew?success";
+        return "redirect:/news?success";
     }
-
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

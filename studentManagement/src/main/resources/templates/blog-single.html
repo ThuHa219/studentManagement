@@ -1,10 +1,8 @@
 <!doctype html>
-
-<html class="no-js " lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-
+<html class="no-js " lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--<![endif]-->
 <head>
-
+<title>HANU</title>
 <!-- Basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,16 +11,10 @@
 <meta name="viewport"
 	content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<!-- Site Meta -->
-<title>HANU</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
-
 <!-- Site Icons -->
-<link rel="shortcut icon" href="images/Hanu_logo.jpg"
+<link rel="shortcut icon" href="/images/Hanu_logo.jpg"
 	type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/Hanu_logo.jpg">
+<link rel="apple-touch-icon" href="/images/Hanu_logo.jpg">
 
 <!-- Google Fonts -->
 <link
@@ -33,22 +25,14 @@
 	rel="stylesheet">
 
 <!-- Custom & Default Styles -->
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/carousel.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/home.css">
-
+<link rel="stylesheet" href="/css/carousel.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/home.css">
 </head>
 <body>
-
-	<!-- LOADER -->
-	<!-- <div id="preloader">
-        <img class="preloader" src="images/loader.gif" alt="">
-    </div>end loader -->
-	<!-- END LOADER -->
-
 	<div id="wrapper">
 		<!-- BEGIN # MODAL LOGIN -->
 		<div class="modal fade" id="login-modal" tabindex="-1" role="dialog"
@@ -75,7 +59,7 @@
 		</div>
 		<!-- END # MODAL LOGIN -->
 
-		<header class="header header-normal" th:fragment="header">
+		<header class="header header-normal">
 			<div class="topbar clearfix">
 				<div class="container">
 					<div class="row-fluid">
@@ -86,6 +70,7 @@
 									href="mailto:#">info@yoursite.com</a>
 							</p>
 						</div>
+						<!-- end left -->
 						<div class="col-md-6 col-sm-6 hidden-xs text-right">
 							<div class="social">
 								<a class="facebook" href="#" data-tooltip="tooltip"
@@ -101,15 +86,19 @@
 									data-tooltip="tooltip" data-placement="bottom"
 									title="Pinterest"><i class="fa fa-pinterest"></i></a>
 							</div>
+							<!-- end social -->
 						</div>
+						<!-- end left -->
 					</div>
+					<!-- end row -->
 				</div>
+				<!-- end container -->
 			</div>
 			<!-- end topbar -->
 
 			<nav class="navbar navbar-expand-xl navbar-light bg-light">
-				<a class="navbar-brand" href="#"><img src="images/Hanu_logo.jpg"
-					alt="" width="60" height="60"></a>
+				<a class="navbar-brand" href="#"><img
+					src="/images/Hanu_logo.jpg" alt="" width="60" height="60"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
 					aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -142,7 +131,7 @@
 						<div class="tagline-message page-title text-center">
 							<h3>Blog & News</h3>
 							<ul class="breadcrumb">
-								<li><a href="javascript:void(0)">HANU</a></li>
+								<li><a href="javascript:void(0)">Edulogy</a></li>
 								<li class="active">Blog</li>
 							</ul>
 						</div>
@@ -162,163 +151,149 @@
 						<div class="col-md-8">
 							<div class="content blog-list">
 								<div class="blog-wrapper clearfix">
-									<th:block th:each="n : ${news}">
-										<div class="blog-meta">
-											<small><a href="#" th:text="${n.subject}"></a></small>
-											<h3>
-												<a th:href="@{/newSingle/{id}(id=${n.id})}" title="" th:text="${n.title}"></a>
-											</h3>
+									<div class="blog-meta">
+									
+										<small><a href="#" th:text="${n.subject}"></a></small>
+										<h3 th:text="${n.title}"></h3>
+										<ul class="list-inline">
+											<li th:text="${n.date}"></li>
+											<li><span>written by</span> <a href="#"
+												th:text="${n.users.username}"></a></li>
+										</ul>
+									</div>
+									<!-- end blog-meta -->
+
+									<div class="blog-desc-big">
+										<p class="lead" th:text="${n.summary}"></p>
+										<p th:text="${n.content}"></p>
+										<hr class="invis">
+
+										<div class="tags-widget">
 											<ul class="list-inline">
-												<li th:text="${n.date}"></li>
-												<li><span>written by</span> <a href="#"
-													th:text="${n.users.username}"></a></li>
+												<li><a href="#" th:text="${n.subject}">course</a></li>
 											</ul>
 										</div>
+										<!-- end list-widget -->
 
-										<div class="blog-desc-big">
-											<p class="lead" th:text="${n.summary}"></p>
-											<p th:text="${n.content}"></p>
-											<a th:href="@{/newSingle/{id}(id=${n.id})}" class="btn btn-primary">Read
-												More</a>
-										</div>
-										<!-- end desc -->
+									</div>
+									<!-- end desc -->
 								</div>
 								<!-- end blog -->
 							</div>
 							<!-- end content -->
-							</th:block>
-							<!-- <div class="content blog-list">
-								<div class="blog-wrapper clearfix">
-									<div class="blog-meta">
-										<small><a href="#">Tips & Tricks</a></small>
-										<h3>
-											<a href="blog-single.html" title="">How to choose best
-												color schemes for your web projects</a>
-										</h3>
-										<ul class="list-inline">
-											<li>2 days ago</li>
-											<li><span>written by</span> <a href="#">Edulogy Team</a></li>
-										</ul>
-									</div>
-									end blog-meta
 
-									<div class="blog-media">
-										<a href="blog-single.html" title=""><img
-											src="upload/blog_02.jpg" alt=""
-											class="img-responsive img-rounded"></a>
-									</div>
-									end media
+							<div class="authorbox">
+								<div class="site-publisher clearfix">
+									<img src="/images/avatar.jpg" alt=""
+										class="img-responsive img-circle"> <a href="#" title="">
+										<h4>
+											<small>about</small> <span th:text="${n.users.username}"></span>
+										</h4>
+									</a>
+									<p th:text="${n.users.description}"></p>
 
-									<div class="blog-desc-big">
-										<p class="lead">If you don't know how to choose best color
-											combinations for your web or graphic designs projects, right
-											place here..</p>
-										<p>Curabitur ut eros orci. Mauris non egestas sem. Fusce
-											mattis tortor sit amet blandit sodales. Nam finibus faucibus
-											ante ut pulvinar. Pellentesque vitae sagittis dolor. Mauris
-											auctor risus eu eros ornare, in pellentesque purus elementum.
-											Etiam efficitur tempor justo. Nullam vel ante sapien.</p>
-										<a href="blog-single.html" class="btn btn-primary">Read
-											More</a>
-									</div>
-									end desc
 								</div>
-								end blog
+								<!-- end publisher -->
 							</div>
-							end content
+							<!-- end details -->
 
-							<div class="content blog-list">
-								<div class="blog-wrapper clearfix">
-									<div class="blog-meta">
-										<small><a href="#">Tips & Tricks</a></small>
-										<h3>
-											<a href="blog-single.html" title="">Learn more about
-												beautiful furniture web design combinations</a>
-										</h3>
-										<ul class="list-inline">
-											<li>4 days ago</li>
-											<li><span>written by</span> <a href="#">Edulogy Team</a></li>
-										</ul>
+							<div class="content boxed-comment clearfix">
+								<h3 class="small-title" th:text = "${#list.size(n.comments)}"> Comments</h3>
+								<div class="comments-list">
+								<th:block th:each="c : ${n.comments}">
+									<div class="media">
+										<p class="pull-right">
+											<small th:text = "${c.date}"></small>
+										</p>
+										<a class="media-left" href="#"> <img
+											src="/images/avatar.jpg" alt="" class="img-circle">
+										</a>
+										<div class="media-body">
+											<h4 class="media-heading user_name" th:text="${c.users.username}"></h4>
+											<p th:text="${c.content}"></p>
+											<a href="#" class="btn btn-primary btn-sm">Reply</a>
+										</div>
 									</div>
-									end blog-meta
+									</th:block>
+									<!-- <div class="media">
+										<p class="pull-right">
+											<small>5 days ago</small>
+										</p>
+										<a class="media-left" href="#"> <img
+											src="upload/people_11.jpeg" alt="" class="img-circle">
+										</a>
+										<div class="media-body">
 
-									<div class="blog-media">
-										<a href="blog-single.html" title=""><img
-											src="upload/blog_03.jpg" alt=""
-											class="img-responsive img-rounded"></a>
-									</div>
-									end media
+											<h4 class="media-heading user_name">Baltej Singh</h4>
+											<p>Meh synth Schlitz, tempor duis single-origin coffee ea
+												next level ethnic fingerstache fanny pack nostrud. Photo
+												booth anim 8-bit hella, PBR 3 wolf moon beard Helvetica.
+												Salvia esse nihil, flexitarian Truffaut synth art party deep
+												v chillwave. Seitan High Life reprehenderit consectetur
+												cupidatat kogi. Et leggings fanny pack, elit bespoke vinyl
+												art party Pitchfork selfies master cleanse Kickstarter
+												seitan retro.</p>
 
-									<div class="blog-desc-big">
-										<p class="lead">Today we will teach you how to find
-											professional materials for your furniture website design.</p>
-										<p>Curabitur ut eros orci. Mauris non egestas sem. Fusce
-											mattis tortor sit amet blandit sodales. Nam finibus faucibus
-											ante ut pulvinar. Pellentesque vitae sagittis dolor. Mauris
-											auctor risus eu eros ornare, in pellentesque purus elementum.
-											Etiam efficitur tempor justo. Nullam vel ante sapien.</p>
-										<a href="blog-single.html" class="btn btn-primary">Read
-											More</a>
+											<p>Drinking vinegar stumptown yr pop-up artisan sunt.
+												Deep v cliche lomo biodiesel Neutra selfies. Shorts fixie
+												consequat flexitarian four loko tempor duis single-origin
+												coffee. Banksy, elit small.</p>
+
+											<a href="#" class="btn btn-primary btn-sm">Reply</a>
+										</div>
 									</div>
-									end desc
+									<div class="media last-child">
+										<p class="pull-right">
+											<small>5 days ago</small>
+										</p>
+										<a class="media-left" href="#"> <img
+											src="upload/people_04.jpeg" alt="" class="img-circle">
+										</a>
+										<div class="media-body">
+
+											<h4 class="media-heading user_name">Baltej Singh</h4>
+											<p>Kickstarter seitan retro. Drinking vinegar stumptown
+												yr pop-up artisan sunt. Deep v cliche lomo biodiesel Neutra
+												selfies. Shorts fixie consequat flexitarian four loko tempor
+												duis single-origin coffee. Banksy, elit small.</p>
+
+											<a href="#" class="btn btn-primary btn-sm">Reply</a>
+										</div>
+									</div>
 								</div>
-								end blog
-							</div>
-							end content
-
-							<div class="content blog-list">
-								<div class="blog-wrapper clearfix">
-									<div class="blog-meta">
-										<small><a href="#">Tips & Tricks</a></small>
-										<h3>
-											<a href="blog-single.html" title="">Don't know where to
-												start? Be relax, we are here to showcase you custom colors.</a>
-										</h3>
-										<ul class="list-inline">
-											<li>4 days ago</li>
-											<li><span>written by</span> <a href="#">Edulogy Team</a></li>
-										</ul>
-									</div>
-									end blog-meta
-
-									<div class="blog-media">
-										<a href="blog-single.html" title=""><img
-											src="upload/blog_04.jpg" alt=""
-											class="img-responsive img-rounded"></a>
-									</div>
-									end media
-
-									<div class="blog-desc-big">
-										<p class="lead">Colors are very important for web design.
-											Read this article to build your own combinations..</p>
-										<p>Curabitur ut eros orci. Mauris non egestas sem. Fusce
-											mattis tortor sit amet blandit sodales. Nam finibus faucibus
-											ante ut pulvinar. Pellentesque vitae sagittis dolor. Mauris
-											auctor risus eu eros ornare, in pellentesque purus elementum.
-											Etiam efficitur tempor justo. Nullam vel ante sapien.</p>
-										<a href="blog-single.html" class="btn btn-primary">Read
-											More</a>
-									</div>
-									end desc
-								</div>
-								end blog
 							</div>
 							end content -->
 
-							<div class="row">
-								<div class="col-md-12">
-									<ul class="pagination">
-										<li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
-										<li class="active"><a href="javascript:void(0)">1</a></li>
-										<li><a href="javascript:void(0)">2</a></li>
-										<li><a href="javascript:void(0)">3</a></li>
-										<li><a href="javascript:void(0)">...</a></li>
-										<li><a href="javascript:void(0)">&raquo;</a></li>
-									</ul>
-								</div>
-								<!-- end col -->
+							<div class="content boxed-comment clearfix">
+								<h3 class="small-title">Leave a Comment</h3>
+								<form class="big-contact-form">
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="text" class="form-control" name="name"
+												placeholder="Full Name">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="email" class="form-control" name="email"
+												placeholder="Email">
+										</div>
+									</div>
+									<div class="col-md-4">
+										<div class="form-group">
+											<input type="text" class="form-control" name="website"
+												placeholder="Website">
+										</div>
+									</div>
+									<div class="col-md-12">
+										<textarea placeholder="Your message" class="form-control"></textarea>
+										<button class="btn btn-primary" type="submit">SEND
+											COMMENT</button>
+									</div>
+								</form>
 							</div>
-							<!-- end row -->
+							<!-- end content -->
+
 						</div>
 						<!-- end col -->
 
@@ -440,7 +415,7 @@
 			<!-- end container -->
 		</section>
 
-		<footer class="section footer noover" th:fragment="footer">
+		<footer class="section footer noover">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-4">
@@ -556,10 +531,9 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/animate.js"></script>
-	<script src="js/custom.js"></script>
-
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/animate.js"></script>
+	<script src="/js/custom.js"></script>
 </body>
 </html>

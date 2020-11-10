@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 @Entity(name = "users")
@@ -30,16 +31,22 @@ public class User {
 	private Set<New> news;
 	@OneToMany(mappedBy = "users")
 	private Set<Comment> comments;
+	@Lob
+	private String description;
 
 	public User() {
 		// do nothing
 	}
 
-	public User(String username, String password, boolean enabled, Set<String> authorities) {
+	public User(String username, String password, boolean enabled,
+			Set<String> authorities, String description, Set<New> news, Set<Comment> comments) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 		this.authorities = authorities;
+		this.description = description;
+		this.news = news;
+		this.comments = comments;
 	}
 
 	public Set<String> getAuthorities() {
@@ -72,6 +79,30 @@ public class User {
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Set<New> getNews() {
+		return news;
+	}
+
+	public void setNews(Set<New> news) {
+		this.news = news;
+	}
+
+	public Set<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(Set<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override

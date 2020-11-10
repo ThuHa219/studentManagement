@@ -33,16 +33,19 @@ public class New {
 	@OneToMany(mappedBy = "news")
 	private Set<Comment> comments;
 	private String subject;
+	@Lob
+	private String summary;
 	public New() {
 		super();
 	}
 
-	public New(String title, String content, User users, Set<Comment> comments, String subject) {
+	public New(String title, String content, User users, Set<Comment> comments, String subject, String summary) {
 		super();
 		this.title = title;
 		this.content = content;
 		this.date = new Date(System.currentTimeMillis());
 		this.subject = subject;
+		this.summary = summary;
 	}
 	
 	
@@ -101,6 +104,14 @@ public class New {
 
 	public void setSubject(String subject) {
 		this.subject = subject;
+	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
 	}
 
 	@Override

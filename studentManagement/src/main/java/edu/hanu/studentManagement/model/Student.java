@@ -34,8 +34,8 @@ public class Student extends User {
 
 	public Student(String id, String name, Gender gender, String dateOfBirth, String major, String department,
 			String cohort, String academicAdvior, String userName, String email, String password, boolean enabled,
-			Set<String> authorities) {
-		super(id, password, enabled, authorities);
+			Set<String> authorities, String description, Set<New> news, Set<Comment> comments) {
+		super(id, password, enabled, authorities, description, news, comments);
 		this.name = name;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;

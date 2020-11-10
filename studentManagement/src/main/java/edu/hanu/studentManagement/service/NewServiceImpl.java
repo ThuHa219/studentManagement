@@ -1,13 +1,12 @@
 package edu.hanu.studentManagement.service;
 
-import java.util.Optional;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import edu.hanu.studentManagement.model.New;
 import edu.hanu.studentManagement.repository.NewRepository;
-
 @Service
 public class NewServiceImpl implements NewService {
 	
@@ -20,8 +19,13 @@ public class NewServiceImpl implements NewService {
 	}
 
 	@Override
-	public Optional<New> findById(int id) {
-		return newRepository.findById(id);
+	public New findById(int id) {
+		return newRepository.findById(id)
+				.orElseThrow(() -> new IllegalArgumentException("NewServiceImpl.findById(): invalid id"));
+	}
+	
+	public List<New> getNews() {
+		return newRepository.findAll();
 	}
 
 }
