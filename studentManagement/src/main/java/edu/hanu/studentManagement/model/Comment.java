@@ -5,6 +5,7 @@ package edu.hanu.studentManagement.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -26,7 +27,7 @@ public class Comment {
 	private String content;
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "new_id", nullable = false)
 	private New news;
 
@@ -80,5 +81,11 @@ public class Comment {
 
 	public void setDate(Date date) {
 		this.date = date;
+	}
+
+	@Override
+	public String toString() {
+		return "Comment [id=" + id + ", users=" + users + ", content=" + content + ", date=" + date + ", news=" + news
+				+ "]";
 	}
 }

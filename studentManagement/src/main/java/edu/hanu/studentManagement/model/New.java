@@ -2,10 +2,13 @@ package edu.hanu.studentManagement.model;
 
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,8 +33,8 @@ public class New {
 	private User users;
 	@Temporal(TemporalType.DATE)
 	private Date date;
-	@OneToMany(mappedBy = "news")
-	private Set<Comment> comments;
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "news")
+	private Set<Comment> comments = new HashSet<>();
 	private String subject;
 	@Lob
 	private String summary;
@@ -117,6 +120,6 @@ public class New {
 	@Override
 	public String toString() {
 		return "New [id=" + id + ", title=" + title + ", content=" + content + ", users=" + users + ", date=" + date
-				+ ", comments=" + comments + ", subject=" + subject + "]";
+				+ ", comments=" + comments.toString() + ", subject=" + subject + "]";
 	}
 }

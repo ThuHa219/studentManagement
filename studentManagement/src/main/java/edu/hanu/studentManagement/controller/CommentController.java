@@ -6,10 +6,12 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.sun.xml.bind.v2.runtime.unmarshaller.Intercepter;
 
 import edu.hanu.studentManagement.model.Comment;
 import edu.hanu.studentManagement.service.CommentService;
@@ -18,25 +20,21 @@ import edu.hanu.studentManagement.service.UserService;
 
 @Controller
 public class CommentController {
-	@Autowired
-	CommentService commentService;
+	
 	@Autowired
 	UserService userService;
 	@Autowired
 	NewService newService;
+	@Autowired
+	CommentService commentService;
 	
-	@ModelAttribute("comment")
-	public Comment getComment() {
-		return new Comment();
-	}
-	
-	@PostMapping(path = {"/createComment/{id}"})
-    public String createComment(@PathVariable("id") int id, @ModelAttribute("comment") @Valid Comment comment,
-        BindingResult result) {
-		comment.setUsers(userService.getUser());
-		comment.setNews(newService.findById(id));
+	@RequestMapping(method = RequestMethod.POST, path = {"/createComment/{id}"})
+    public String registerUserAccount(@PathVariable("id") int id, @ModelAttribute("news") @Valid Comment comment) {
 		comment.setDate(new Date(System.currentTimeMillis()));
+		comment.setNews(newService.findById(id));
+		comment.setUsers(userService.getUser());
         commentService.save(comment);
-        return "redirect:/login?success";
+        return "redirect:/newSingle/"+id;
     }
+	
 }

@@ -22,12 +22,14 @@ public class StudentDTO {
 	@NotEmpty
 	private String password;
 	@NotEmpty
+	private String description;
+	@NotEmpty
 	private String confirmPassword;
 	@NotEmpty
 	private String studentUsername;
 	
 	public StudentDTO(String name, String department, String dob, Gender gender, String email, String password,
-			String confirmPassword, String studentUsername) {
+			String confirmPassword, String studentUsername, String description) {
 		super();
 		this.name = name;
 		this.department = department;
@@ -37,6 +39,7 @@ public class StudentDTO {
 		this.password = password;
 		this.confirmPassword = confirmPassword;
 		this.studentUsername = studentUsername;
+		this.description = description;
 	}
 
 	public StudentDTO() {
@@ -106,5 +109,12 @@ public class StudentDTO {
 	public void setConfirmPassword(String confirmPassword) {
 		this.confirmPassword = confirmPassword;
 	}
-	
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }

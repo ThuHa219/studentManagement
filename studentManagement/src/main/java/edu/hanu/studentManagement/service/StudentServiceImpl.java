@@ -31,6 +31,7 @@ public class StudentServiceImpl implements StudentService {
         user.setAuthorities(new HashSet<>(Arrays.asList("USER")));
         user.setUsername(registration.getStudentUsername());
         user.setEnabled(true);
+        user.setDescription(registration.getDescription());
         return repository.save(user);
     }
 	

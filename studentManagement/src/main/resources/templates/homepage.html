@@ -125,6 +125,50 @@
 						<li class="nav-item"><a class="nav-link" th:href="@{/news}">New</a></li>
 						<li class="nav-item"><a class="nav-link disabled" href="#"
 							tabindex="-1" aria-disabled="true">Disabled</a></li>
+						<li class="dropdown yamm-fw yamm-half"><a href="#"
+							data-toggle="dropdown" class="dropdown-toggle active">Mega
+								Menu <b class="fa fa-angle-down"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<li>
+									<div class="yamm-content clearfix">
+										<div class="row-fluid">
+											<div class="col-md-6 col-sm-6">
+												<h4>Course Pages</h4>
+												<ul>
+													<li><a href="#">Courses Name 01</a></li>
+													<li><a href="#">Courses Name 02</a></li>
+													<li><a href="#">Courses Name 03</a></li>
+													<li><a href="#">Courses Name 04</a></li>
+													<li><a href="#">Courses Name 05</a></li>
+													<li><a href="#">Courses Name 06</a></li>
+													<li><a href="#">Courses Name 07</a></li>
+													<li><a href="#">Courses Name 08</a></li>
+													<li><a href="#">Courses Name 09</a></li>
+												</ul>
+											</div>
+											<div class="col-md-6 col-sm-6">
+												<div class="menu-widget text-center">
+													<div class="image-wrap entry">
+														<img src="upload/course_01.jpg" alt=""
+															class="img-responsive">
+														<div class="magnifier">
+															<a href="#" title=""><i class="flaticon-add"></i></a>
+														</div>
+													</div>
+													<!-- end image-wrap -->
+													<h5>
+														<a href="#">Learning Bootstrap Framework</a>
+													</h5>
+													<small>$22.00</small> <a href="#" class="menu-button">View
+														Course</a>
+												</div>
+												<!-- end widget -->
+											</div>
+										</div>
+									</div>
+								</li>
+							</ul></li>
 					</ul>
 					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search"
@@ -134,7 +178,6 @@
 				</div>
 			</nav>
 		</header>
-
 		<section class="section db p120">
 			<div class="container">
 				<div class="row">
@@ -166,7 +209,8 @@
 										<div class="blog-meta">
 											<small><a href="#" th:text="${n.subject}"></a></small>
 											<h3>
-												<a th:href="@{/newSingle/{id}(id=${n.id})}" title="" th:text="${n.title}"></a>
+												<a th:href="@{/newSingle/{id}(id=${n.id})}" title=""
+													th:text="${n.title}"></a>
 											</h3>
 											<ul class="list-inline">
 												<li th:text="${n.date}"></li>
@@ -178,8 +222,8 @@
 										<div class="blog-desc-big">
 											<p class="lead" th:text="${n.summary}"></p>
 											<p th:text="${n.content}"></p>
-											<a th:href="@{/newSingle/{id}(id=${n.id})}" class="btn btn-primary">Read
-												More</a>
+											<a th:href="@{/newSingle/{id}(id=${n.id})}"
+												class="btn btn-primary">Read More</a>
 										</div>
 										<!-- end desc -->
 								</div>

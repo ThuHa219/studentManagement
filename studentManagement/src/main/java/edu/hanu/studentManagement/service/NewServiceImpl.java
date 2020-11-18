@@ -7,11 +7,12 @@ import org.springframework.stereotype.Service;
 
 import edu.hanu.studentManagement.model.New;
 import edu.hanu.studentManagement.repository.NewRepository;
+
 @Service
 public class NewServiceImpl implements NewService {
-	
+
 	@Autowired
-	NewRepository newRepository;
+	private NewRepository newRepository;
 
 	@Override
 	public New save(New news) {
@@ -23,9 +24,8 @@ public class NewServiceImpl implements NewService {
 		return newRepository.findById(id)
 				.orElseThrow(() -> new IllegalArgumentException("NewServiceImpl.findById(): invalid id"));
 	}
-	
+
 	public List<New> getNews() {
 		return newRepository.findAll();
 	}
-
 }

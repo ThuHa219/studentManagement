@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import edu.hanu.studentManagement.model.Comment;
 import edu.hanu.studentManagement.model.New;
-import edu.hanu.studentManagement.service.CommentService;
 import edu.hanu.studentManagement.service.NewService;
 import edu.hanu.studentManagement.service.UserService;
 
@@ -40,6 +40,11 @@ public class NewController {
 	@ModelAttribute("news")
 	public New getNew() {
 		return new New();
+	}
+	
+	@ModelAttribute("comment")
+	public Comment getComment() {
+		return new Comment();
 	}
 	
 	@RequestMapping(method = RequestMethod.POST, path = {"/createNew"})

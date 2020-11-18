@@ -11,7 +11,7 @@ import edu.hanu.studentManagement.repository.CommentRepository;
 @Service
 public class CommentServiceImpl implements CommentService {
 	@Autowired
-	CommentRepository commentRepository;
+	private CommentRepository commentRepository;
 
 	@Override
 	public List<Comment> getComments() {
