@@ -14,6 +14,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
 
 @Entity(name = "users")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -24,6 +25,9 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
+	@Column(length = 30)
+	@Email
+	private String email;
 	@ElementCollection(fetch = FetchType.EAGER)
 	@JoinTable(name = "authorities")
 	private Set<String> authorities;
@@ -38,7 +42,7 @@ public class User {
 		// do nothing
 	}
 
-	public User(String username, String password, boolean enabled,
+	public User(String email, String username, String password, boolean enabled,
 			Set<String> authorities, String description, Set<New> news, Set<Comment> comments) {
 		this.username = username;
 		this.password = password;
@@ -47,6 +51,7 @@ public class User {
 		this.description = description;
 		this.news = news;
 		this.comments = comments;
+		this.email = email;
 	}
 
 	public Set<String> getAuthorities() {
@@ -103,6 +108,14 @@ public class User {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	@Override

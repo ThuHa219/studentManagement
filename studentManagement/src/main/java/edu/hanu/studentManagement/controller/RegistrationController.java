@@ -22,6 +22,7 @@ import edu.hanu.studentManagement.service.StudentService;
 public class RegistrationController {
 	@Autowired
     private StudentService studentService;
+	
 	@GetMapping
 	public String showRegistration(Model model) {
 		return "register";

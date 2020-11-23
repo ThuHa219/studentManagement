@@ -39,5 +39,4 @@ public class StudentServiceImpl implements StudentService {
 	public Optional<Student> findById(String id) {
 		return repository.findById(id);
 	}
-
 }

@@ -37,7 +37,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                "/fonts/**",
 	                "/vendor/**",
 	                "/register",
-	                "/login", "/").permitAll()
+	                "/login", "/",
+	                "/forgotPassword",
+	                "/resetPassword",
+	                "//user/savePassword",
+	                "/user/changePassword",
+	                "/updatePassword").permitAll()
 			// here goes the path that you want to secure
 			.antMatchers("/api/**").hasAuthority("USER")
 			/////

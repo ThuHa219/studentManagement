@@ -25,8 +25,6 @@ public class Student extends User {
 	private String cohort;
 	@Column(length = 30)
 	private String academicAdvior;
-	@Column(length = 30)
-	private String email;
 
 	public Student() {
 		super();
@@ -35,7 +33,7 @@ public class Student extends User {
 	public Student(String id, String name, Gender gender, String dateOfBirth, String major, String department,
 			String cohort, String academicAdvior, String userName, String email, String password, boolean enabled,
 			Set<String> authorities, String description, Set<New> news, Set<Comment> comments) {
-		super(id, password, enabled, authorities, description, news, comments);
+		super(email, id, password, enabled, authorities, description, news, comments);
 		this.name = name;
 		this.gender = gender;
 		this.dateOfBirth = dateOfBirth;
@@ -43,7 +41,6 @@ public class Student extends User {
 		this.department = department;
 		this.cohort = cohort;
 		this.academicAdvior = academicAdvior;
-		this.email = email;
 	}
 
 	public String getName() {
@@ -100,13 +97,5 @@ public class Student extends User {
 
 	public void setAcademicAdvior(String academicAdvior) {
 		this.academicAdvior = academicAdvior;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
 	}
 }

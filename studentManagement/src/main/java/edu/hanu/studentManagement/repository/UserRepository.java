@@ -10,4 +10,5 @@ import edu.hanu.studentManagement.model.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, String> {
 	Optional<User> findById(String id);
+	Optional<User> findByEmail(String email);
 }

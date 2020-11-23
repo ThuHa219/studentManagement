@@ -1,8 +1,8 @@
 <!doctype html>
-
-<html class="no-js " lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
-
+<!--[if IE 9]> <html class="no-js ie9 fixed-layout" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js " lang="en">
+<!--<![endif]-->
 <head>
 
 <!-- Basic -->
@@ -39,7 +39,6 @@
 <link rel="stylesheet" href="css/carousel.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/createNew.css">
 
 </head>
 <body>
@@ -119,12 +118,13 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-3 mt-lg-0">
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/home}">Home <span class="sr-only">(current)</span>
 						</a></li>
 						<li class="nav-item"><a class="nav-link" th:href="@{/news}">New</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
+						<li class="nav-item"><a class="nav-link"
+							th:href="@{/contact}">Contact</a></li>
 						<li class="dropdown yamm-fw yamm-half"><a href="#"
 							data-toggle="dropdown" class="dropdown-toggle active">Mega
 								Menu <b class="fa fa-angle-down"></b>
@@ -178,45 +178,111 @@
 				</div>
 			</nav>
 		</header>
-	<div class="inner contact">
-		<!-- Form Area -->
-		<div class="contact-form">
-			<!-- Form -->
-			<form id="contact-us" th:action="@{/createNew}" th:object="${news}" method="POST">
-				<!-- Left Inputs -->
-				<div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-					<!-- Name -->
-					<input type="text" name="name" id="name" required="required"
-						class="form" placeholder="Title" th:field="*{title}"/>
-					<!-- Email -->
-					 <input type="text" name="summary" id="summary" required="required"
-						class="form" placeholder="Summary" th:field="*{summary}"/>
-					<!-- Subject -->
-					<input type="text" name="subject" id="subject" required="required"
-						class="form" placeholder="Subject" th:field="*{subject}" />
+		<section class="section db p120">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="tagline-message page-title text-center">
+							<h3>Get In Touch</h3>
+							<ul class="breadcrumb">
+								<li><a href="javascript:void(0)">HANU</a></li>
+								<li class="active">Get in touch</li>
+							</ul>
+						</div>
+					</div>
+					<!-- end col -->
 				</div>
-				<!-- End Left Inputs -->
-				<!-- Right Inputs -->
-				<div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-					<!-- Message -->
-					<textarea name="message" id="message" class="form textarea"
-						placeholder="New" th:field="*{content}"></textarea>
+				<!-- end row -->
+			</div>
+			<!-- end container -->
+		</section>
+		<!-- end section -->
+
+		<section class="section gb nopadtop">
+			<div class="container">
+				<div class="boxed boxedp4">
+
+					<div id="map" class="wow slideInUp"></div>
+					<div class="col-md-2">
+						<div class="small-box">
+							<iframe width="1000" height="650"
+								src="https://www.youtube.com/embed/DhtUSmBp1Zg" frameborder="1"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen></iframe>
+						</div>
+						<!-- end small-box -->
+					</div>
+					<br>
+					<!-- end col -->
+					<div class="col-md-2">
+						<div class="small-box">
+							<iframe width="1000" height="850" frameborder="1"
+								style="border: 0"
+								src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJ0-nia6WtNTEROA-3Y7vDtkY&key=AIzaSyCVfVL83gNL0Cpc8eu3OZoct4gu6NrUtkM"
+								allowfullscreen></iframe>
+						</div>
+						<!-- end small-box -->
+					</div>
+					<!-- end col -->
+
+					<div class="row contactv2 text-center">
+						<div class="col-md-6">
+							<div class="small-box">
+								<i class="flaticon-email wow fadeIn"></i>
+								<h4>Contact us today</h4>
+								<small>Phone: +90 987 665 55 44</small> <small>Fax: +90
+									987 665 55 45</small>
+								<p>
+									<a href="mail:to">info@yoursite.com</a>
+								</p>
+							</div>
+							<!-- end small-box -->
+						</div>
+						<!-- end col -->
+						<div class="col-md-6">
+							<div class="small-box">
+								<i class="flaticon-share wow fadeIn"></i>
+								<h4>Be Social</h4>
+								<small>Twitter: @yourhandle</small> <small>Facebook:
+									facebook.com/yourhandle</small>
+								<p>
+									<a href="#">Email Newsletter</a>
+								</p>
+							</div>
+							<!-- end small-box -->
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end contactv2 -->
+
+					<div class="row">
+						<div class="col-md-12">
+							<div class="section-title text-center">
+								<h3>Contact Form</h3>
+								<p>Maecenas sit amet tristique turpis. Quisque porttitor
+									eros quis leo pulvinar, at hendrerit sapien iaculis.</p>
+							</div>
+							<!-- end title -->
+
+							<form class="big-contact-form" role="search">
+								<input type="text" class="form-control"
+									placeholder="Enter your name.."> <input type="email"
+									class="form-control" placeholder="Enter email.."> <input
+									type="text" class="form-control" placeholder="Your phone..">
+								<input type="text" class="form-control" placeholder="Subject..">
+								<textarea class="form-control" placeholder="Message goes here.."></textarea>
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</form>
+						</div>
+						<!-- end col -->
+					</div>
+					<!-- end row -->
 				</div>
-				<!-- End Right Inputs -->
-				<!-- Bottom Submit -->
-				<div class="relative fullwidth col-xs-12">
-					<!-- Send Button -->
-					<button type="submit" id="submit" name="submit"
-						class="form-btn semibold">Send New</button>
-				</div>
-				<!-- End Bottom Submit -->
-				<!-- Clear -->
-				<div class="clear"></div>
-			</form>
-		</div>
-		<!-- End Contact Form Area -->
-	</div>
-	<footer class="section footer noover" th:fragment="footer">
+				<!-- end container -->
+			</div>
+		</section>
+
+		<footer class="section footer noover">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-4">
@@ -328,14 +394,13 @@
 	<!-- end wrapper -->
 
 	<!-- jQuery Files -->
-	<script
-		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
-		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
-		crossorigin="anonymous"></script>
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/bootstrap.min.js"></script>
 	<script src="js/animate.js"></script>
 	<script src="js/custom.js"></script>
+	<!-- VIDEO BG PLUGINS -->
+	<script
+		src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAkADq7R0xf6ami9YirAM1N-yl7hdnYBhM "></script>
+
 </body>
-<!-- End Inner -->
 </html>
