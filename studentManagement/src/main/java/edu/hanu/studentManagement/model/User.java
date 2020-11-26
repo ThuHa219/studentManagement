@@ -2,6 +2,7 @@ package edu.hanu.studentManagement.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.DiscriminatorType;
@@ -11,8 +12,10 @@ import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 
@@ -35,6 +38,15 @@ public class User {
 	private Set<New> news;
 	@OneToMany(mappedBy = "users")
 	private Set<Comment> comments;
+	@OneToMany(mappedBy = "users")
+	private Set<File> files;
+	@ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "user_course", 
+        joinColumns = { @JoinColumn(name = "username") }, 
+        inverseJoinColumns = { @JoinColumn(name = "course_id") }
+    )
+	private Set<Course> course;
 	@Lob
 	private String description;
 
@@ -116,6 +128,14 @@ public class User {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public Set<File> getFiles() {
+		return files;
+	}
+
+	public void setFiles(Set<File> files) {
+		this.files = files;
 	}
 
 	@Override

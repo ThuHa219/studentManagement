@@ -4,7 +4,7 @@
 	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <!-- Basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,9 @@
 <meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="shortcut icon" href="images/Hanu_logo.jpg"
+<link rel="shortcut icon" href="../images/Hanu_logo.jpg"
 	type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/Hanu_logo.jpg">
+<link rel="apple-touch-icon" href="../images/Hanu_logo.jpg">
 
 <!-- Google Fonts -->
 <link
@@ -33,13 +33,12 @@
 	rel="stylesheet">
 
 <!-- Custom & Default Styles -->
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/carousel.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/home.css">
-<link rel="stylesheet" href="css/createNew.css">
+	href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/carousel.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/manage-course.css">
 
 </head>
 <body>
@@ -85,7 +84,8 @@
 								<strong><i class="fa fa-phone"></i></strong> +90 543 123 45 67
 								&nbsp;&nbsp; <strong><i class="fa fa-envelope"></i></strong> <a
 									href="mailto:#">info@yoursite.com</a>
-							</p>
+                            </p>
+                            <a href = "#"><i class="far fa-comments icon" >Chat room</i></a>
 						</div>
 						<div class="col-md-6 col-sm-6 hidden-xs text-right">
 							<div class="social">
@@ -100,16 +100,33 @@
 									data-placement="bottom" title="Linkedin"><i
 									class="fa fa-linkedin"></i></a> <a class="pinterest" href="#"
 									data-tooltip="tooltip" data-placement="bottom"
-									title="Pinterest"><i class="fa fa-pinterest"></i></a>
-							</div>
-						</div>
+                                    title="Pinterest"><i class="fa fa-pinterest"></i>
+                                </a>
+                            </div>
+                                <!-- <a href = "#"><i class="fas fa-user-graduate icon">1701040163</i></a> -->
+                                <li class="dropdown yamm-fw  profile"><a href = "#"><i class="fas fa-user-graduate icon">1701040163</i></a>
+                                    <ul class="dropdown-menu menu">
+                                        <li>
+                                            <h5>Vu Van Tung</h5>
+                                            <ul class = "com">
+                                            <li><a href="#">Profile</a></li>
+                                            <li><a href="#">Change password</a></li>
+                                            <li><a href="#">Logout</a></li>
+                                            </ul>
+                                              
+                                        </li>
+                                    </ul></li>
+                                </a>
+                               </div>
+						    </div>
+                        </div>
 					</div>
 				</div>
 			</div>
 			<!-- end topbar -->
 
 			<nav class="navbar navbar-expand-xl navbar-light bg-light">
-				<a class="navbar-brand" href="#"><img src="images/Hanu_logo.jpg"
+				<a class="navbar-brand" href="#"><img src="../images/Hanu_logo.jpg"
 					alt="" width="60" height="60"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
@@ -119,12 +136,12 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-3 mt-lg-0">
-						<li class="nav-item active"><a class="nav-link"
+					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+						<li class="nav-item active"><a href="#" class="nav-link"
 							th:href="@{/home}">Home <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/news}">New</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contact</a></li>
+						<li class="nav-item"><a href="#" class="nav-link" th:href="@{/news}">New</a></li>
+						<li class="nav-item"><a  href="#" class="nav-link" th:href="@{/contact}">Contact</a></li>
 						<li class="dropdown yamm-fw yamm-half"><a href="#"
 							data-toggle="dropdown" class="dropdown-toggle active">Mega
 								Menu <b class="fa fa-angle-down"></b>
@@ -178,45 +195,50 @@
 				</div>
 			</nav>
 		</header>
-	<div class="inner contact">
-		<!-- Form Area -->
-		<div class="contact-form">
-			<!-- Form -->
-			<form id="contact-us" th:action="@{/createNew}" th:object="${news}" method="POST">
-				<!-- Left Inputs -->
-				<div class="col-xs-6 wow animated slideInLeft" data-wow-delay=".5s">
-					<!-- Name -->
-					<input type="text" name="name" id="name" required="required"
-						class="form" placeholder="Title" th:field="*{title}"/>
-					<!-- Summary -->
-					 <input type="text" name="summary" id="summary" required="required"
-						class="form" placeholder="Summary" th:field="*{summary}"/>
-					<!-- Subject -->
-					<input type="text" name="subject" id="subject" required="required"
-						class="form" placeholder="Subject" th:field="*{subject}" />
-				</div>
-				<!-- End Left Inputs -->
-				<!-- Right Inputs -->
-				<div class="col-xs-6 wow animated slideInRight" data-wow-delay=".5s">
-					<!-- Message -->
-					<textarea name="message" id="message" class="form textarea"
-						placeholder="New" th:field="*{content}"></textarea>
-				</div>
-				<!-- End Right Inputs -->
-				<!-- Bottom Submit -->
-				<div class="relative fullwidth col-xs-12">
-					<!-- Send Button -->
-					<button type="submit" id="submit" name="submit"
-						class="form-btn semibold">Send New</button>
-				</div>
-				<!-- End Bottom Submit -->
-				<!-- Clear -->
-				<div class="clear"></div>
-			</form>
-		</div>
-		<!-- End Contact Form Area -->
-	</div>
-	<footer class="section footer noover" th:fragment="footer">
+            <section class="section db p120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tagline-message page-title text-center">
+                                <h3>Course</h3>
+                                <ul class="breadcrumb">
+                                    <li><a href="javascript:void(0)">HANU</a></li>
+									<i class="fas fa-table" id = "icon-book"></i>
+									<p>Manage Course</p>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+            <!-- end section -->
+
+        <div class = "box-container">
+            <div class = "weekly-learn box">
+            <div th:if= "${not #lists.isEmpty(courses)}">
+            <th:block th:each="c : ${courses}">
+                <div>
+                    <h4>System And Analysis Design</h4>
+                    <a href = "#"><i class="fas fa-trash-alt"></i>     Remove</a>
+                </div>
+			</th:block>
+			</div>
+                <hr> 
+                <div >
+                    <h4>Create new course</h4>
+                    <form action="#">
+                    <input type="text" id="message" autocomplete="off"
+                  placeholder="    Type name of course"/>
+                    <button type = "submit"><i class="fas fa-plus-square"></i>Add</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div> 
+        <footer class="section footer noover" th:fragment="footer">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-4 col-md-4">
@@ -315,7 +337,7 @@
 					<div class="pull-right">
 						<div class="footer-links">
 							<ul class="list-inline">
-								<li>Design : <a href="https://html.design">HTML.Design</a></li>
+								<li>Design : TungVu</li>
 							</ul>
 						</div>
 					</div>
@@ -332,10 +354,10 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/animate.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/animate.js"></script>
+	<script src="/js/custom.js"></script>
+
 </body>
-<!-- End Inner -->
 </html>

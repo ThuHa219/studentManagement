@@ -19,7 +19,11 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import org.hibernate.search.annotations.Field;
+import org.hibernate.search.annotations.Indexed;
+
 @Entity(name = "news")
+@Indexed
 public class New {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -35,6 +39,7 @@ public class New {
 	private Date date;
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "news")
 	private Set<Comment> comments = new HashSet<>();
+	@Field
 	private String subject;
 	@Lob
 	private String summary;

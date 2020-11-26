@@ -13,13 +13,12 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import edu.hanu.studentManagement.model.New;
 import edu.hanu.studentManagement.service.NewService;
+import edu.hanu.studentManagement.service.SearchService;
 import edu.hanu.studentManagement.service.SecurityService;
 
 @Controller
@@ -31,10 +30,19 @@ public class HomeController {
 	private SecurityService securityService;
 	@Autowired
 	private MessageSource messages;
+	@Autowired
+	private SearchService searchService;
 	
 	@GetMapping("/home")
-	public String user(Model model) {
+	public String user(@RequestParam(value="search", required=false) String search, Model model) {
+		List<New> searchResults = null;
+		try {
+			searchResults = searchService.search(search);
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
 		model.addAttribute("news", getNews());
+		model.addAttribute("search", searchResults);
 		return "homepage";
 	}
 	

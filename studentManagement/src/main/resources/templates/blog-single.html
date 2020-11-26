@@ -196,10 +196,11 @@
 								<!-- end publisher -->
 							</div>
 							<!-- end details -->
-							<th:block th:each="c : ${n.comments}">
-								<div class="content boxed-comment clearfix">
-									<h3 class="small-title">Comments</h3>
-									<div class="comments-list">
+
+							<div class="content boxed-comment clearfix">
+								<h3 class="small-title">Comments</h3>
+								<div class="comments-list">
+									<th:block th:each="c : ${n.comments}">
 										<div class="media">
 											<p class="pull-right">
 												<small th:text="${c.date}"></small>
@@ -214,9 +215,9 @@
 												<a href="#" class="btn btn-primary btn-sm">Reply</a>
 											</div>
 										</div>
-									</div>
+									</th:block>
 								</div>
-							</th:block>
+							</div>
 							<!-- <div class="media">
 										<p class="pull-right">
 											<small>5 days ago</small>
@@ -267,9 +268,12 @@
 
 					<div class="content boxed-comment clearfix">
 						<h3 class="small-title">Leave a Comment</h3>
-						<form class="big-contact-form" th:action="@{/createComment/{id}(id=${n.id})}" th:object="${comment}" method="POST">
+						<form class="big-contact-form"
+							th:action="@{/createComment/{id}(id=${n.id})}"
+							th:object="${comment}" method="POST">
 							<div class="col-md-12">
-								<textarea placeholder="Your message" class="form-control" th:field="*{content}"></textarea>
+								<textarea placeholder="Your message" class="form-control"
+									th:field="*{content}"></textarea>
 								<button class="btn btn-primary" type="submit">SEND
 									COMMENT</button>
 							</div>

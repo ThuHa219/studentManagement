@@ -1,4 +1,4 @@
-package edu.hanu.studentManagement.model;
+ package edu.hanu.studentManagement.model;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

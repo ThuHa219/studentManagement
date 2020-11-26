@@ -39,4 +39,9 @@ public class StudentServiceImpl implements StudentService {
 	public Optional<Student> findById(String id) {
 		return repository.findById(id);
 	}
+	
+	@Override
+	public Student saveOrUpdate(Student student) {
+		return repository.save(student);
+	}
 }

@@ -20,9 +20,9 @@
 <meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="shortcut icon" href="images/Hanu_logo.jpg"
+<link rel="shortcut icon" href="/images/Hanu_logo.jpg"
 	type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/Hanu_logo.jpg">
+<link rel="apple-touch-icon" href="/images/Hanu_logo.jpg">
 
 <!-- Google Fonts -->
 <link
@@ -33,13 +33,18 @@
 	rel="stylesheet">
 
 <!-- Custom & Default Styles -->
-<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
-	href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/carousel.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/home.css">
-
+	href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="/css/carousel.css">
+<link rel="stylesheet" href="/css/animate.css">
+<link rel="stylesheet" href="/css/home.css">
+<!-- <link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -108,8 +113,8 @@
 			<!-- end topbar -->
 
 			<nav class="navbar navbar-expand-xl navbar-light bg-light">
-				<a class="navbar-brand" href="#"><img src="images/Hanu_logo.jpg"
-					alt="" width="60" height="60"></a>
+				<a class="navbar-brand" href="#"><img
+					src="/images/Hanu_logo.jpg" alt="" width="60" height="60"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
 					aria-controls="navbarTogglerDemo02" aria-expanded="false"
@@ -122,16 +127,9 @@
 						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/home}">Home <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/news}">New</a></li>
-						<li class="nav-item active"><a class="nav-link"
+						<li class="nav-item"><a class="nav-link" th:href="@{/news}">New</a></li>
+						<li class="nav-item"><a class="nav-link"
 							th:href="@{/contact}">Contact</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{user/account}">Account</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{teacher/course}">Teacher Course</a></li>
-						<li class="nav-item active"><a class="nav-link"
-							th:href="@{/chat}">Chat</a></li>
 						<li class="dropdown yamm-fw yamm-half"><a href="#"
 							data-toggle="dropdown" class="dropdown-toggle active">Mega
 								Menu <b class="fa fa-angle-down"></b>
@@ -177,234 +175,166 @@
 								</li>
 							</ul></li>
 					</ul>
-					<form class="form-inline my-2 my-lg-0" th:action="@{/home}"
-						th:object="${search}">
+					<form class="form-inline my-2 my-lg-0">
 						<input class="form-control mr-sm-2" type="search"
-							placeholder="Search" name="search" id="search">
+							placeholder="Search">
 						<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
 					</form>
 				</div>
 			</nav>
 		</header>
-		<section class="section db p120">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="tagline-message page-title text-center">
-							<h3>Blog & News</h3>
-							<ul class="breadcrumb">
-								<li><a href="javascript:void(0)">HANU</a></li>
-								<li class="active">Blog</li>
-							</ul>
-						</div>
-					</div>
-					<!-- end col -->
+
+		<hr>
+		<div class="container bootstrap snippet">
+			<div class="row">
+				<div class="col-sm-10">
+					<h1 th:text="${u.username}">User name</h1>
 				</div>
-				<!-- end row -->
 			</div>
-			<!-- end container -->
-		</section>
-		<!-- end section -->
+			<div class="row">
+				<div class="col-sm-3">
+					<!--left col-->
 
-		<section class="section gb nopadtop">
-			<div class="container">
-				<div class="boxed">
-					<div class="row">
-						<div class="col-md-8">
-							<div class="content blog-list">
-								<div class="blog-wrapper clearfix">
-									<div th:if="${not #lists.isEmpty(search)}">
-										<th:block th:each="n : ${search}">
-											<div class="blog-meta">
-												<small><a href="#" th:text="${n.subject}"></a></small>
-												<h3>
-													<a th:href="@{/newSingle/{id}(id=${n.id})}" title=""
-														th:text="${n.title}"></a>
-												</h3>
-												<ul class="list-inline">
-													<li th:text="${n.date}"></li>
-													<li><span>written by</span> <a href="#"
-														th:text="${n.users.username}"></a></li>
-												</ul>
-											</div>
 
-											<div class="blog-desc-big">
-												<p class="lead" th:text="${n.summary}"></p>
-												<p th:text="${n.content}"></p>
-												<a th:href="@{/newSingle/{id}(id=${n.id})}"
-													class="btn btn-primary">Read More</a>
-											</div>
-											<!-- end desc -->
-									</div>
-									<!-- end blog -->
-								</div>
-								<!-- end content -->
-								</th:block>
-							</div>
+					<div class="text-center">
+						<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
+							class="avatar img-circle img-thumbnail" alt="avatar">
+						<h6 th:text="${u.name}">UserName</h6>
+					</div>
+					</hr>
+					<br>
 
-							<div th:unless="${not #lists.isEmpty(search)}">
-								<th:block th:each="n : ${news}">
-									<div class="blog-meta">
-										<small><a href="#" th:text="${n.subject}"></a></small>
-										<h3>
-											<a th:href="@{/newSingle/{id}(id=${n.id})}" title=""
-												th:text="${n.title}"></a>
-										</h3>
-										<ul class="list-inline">
-											<li th:text="${n.date}"></li>
-											<li><span>written by</span> <a href="#"
-												th:text="${n.users.username}"></a></li>
-										</ul>
-									</div>
 
-									<div class="blog-desc-big">
-										<p class="lead" th:text="${n.summary}"></p>
-										<p th:text="${n.content}"></p>
-										<a th:href="@{/newSingle/{id}(id=${n.id})}"
-											class="btn btn-primary">Read More</a>
-									</div>
-									<!-- end desc -->
-							</div>
-							<!-- end blog -->
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							Email <i class="fa fa-link fa-1x"></i>
 						</div>
-						<!-- end content -->
-						</th:block>
+						<div class="panel-body">
+							<a href="http://bootnipets.com" th:text="${u.email}">abc@gmail.com</a>
+						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-md-12">
-							<ul class="pagination">
-								<li class="disabled"><a href="javascript:void(0)">&laquo;</a></li>
-								<li class="active"><a href="javascript:void(0)">1</a></li>
-								<li><a href="javascript:void(0)">2</a></li>
-								<li><a href="javascript:void(0)">3</a></li>
-								<li><a href="javascript:void(0)">...</a></li>
-								<li><a href="javascript:void(0)">&raquo;</a></li>
-							</ul>
+
+					<ul class="list-group">
+						<li class="list-group-item text-muted">Activity <i
+							class="fa fa-dashboard fa-1x"></i></li>
+						<li class="list-group-item text-right"><span
+							class="pull-left"><strong>Blog&emsp;&emsp;</strong><i th:text=${numberOfBlog}></i></span>
+							</li>
+						<li class="list-group-item text-right"><span
+							class="pull-left"><strong>Comment&emsp;&emsp;</strong><i th:text="${numberOfComment}"></i></span>
+							</li>
+					</ul>
+
+					<div class="panel panel-default">
+						<div class="panel-heading">QLDT HANU</div>
+						<div class="panel-body">
+							<i class="fa fa-facebook fa-2x"></i> <i
+								class="fa fa-github fa-2x"></i> <i class="fa fa-twitter fa-2x"></i>
+							<i class="fa fa-pinterest fa-2x"></i> <i
+								class="fa fa-google-plus fa-2x"></i>
 						</div>
-						<!-- end col -->
 					</div>
-					<!-- end row -->
+
 				</div>
-				<!-- end col -->
+				<!--/col-3-->
+				<div class="col-sm-9">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#edit">Edit</a></li>
+					</ul>
 
-				<div class="sidebar col-md-4">
-					<div class="widget clearfix">
-						<div class="banner-widget">
-							<img src="upload/banner.jpeg" alt=""
-								class="img-responsive img-rounded">
-						</div>
-					</div>
 
-					<div class="widget clearfix">
-						<h3 class="widget-title">Popular Posts</h3>
-						<div class="post-widget">
-							<div class="media">
-								<img src="upload/blog_small_01.jpg" alt=""
-									class="img-responsive alignleft img-rounded">
-								<div class="media-body">
-									<h5 class="mt-0">
-										<a href="blog-single.html">Learning English Like a Pro..</a>
-									</h5>
-									<div class="blog-meta">
-										<ul class="list-inline">
-											<li>4 days ago</li>
-											<li><span>by</span> <a href="#">Edulogy Team</a></li>
-										</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="home">
+							<hr>
+							<form th:action="@{/user/edit}" th:object="${user}" method="POST"
+								id="registrationForm">
+								<div class="form-group">
+
+									<div class="col-xs-6">
+										<label for="first_name"><h4>Name</h4></label> <input
+											type="text" class="form-control" name="name" id="name"
+											placeholder="name" title="enter your name if any."
+											th:field="*{name}">
 									</div>
-									<!-- end blog-meta -->
 								</div>
-							</div>
+								<div class="form-group">
 
-							<div class="media">
-								<img src="upload/blog_small_02.jpg" alt=""
-									class="img-responsive alignleft img-rounded">
-								<div class="media-body">
-									<h5 class="mt-0">
-										<a href="blog-single.html">How to create a beautiful
-											website with Bootstrap</a>
-									</h5>
-									<div class="blog-meta">
-										<ul class="list-inline">
-											<li>5 days ago</li>
-											<li><span>by</span> <a href="#">Boby DOE</a></li>
-										</ul>
+									<div class="col-xs-6">
+										<label for="last_name"><h4>Department</h4></label> <input
+											type="text" class="form-control" name="department"
+											th:field="*{department}" placeholder="last name"
+											title="enter your department if any.">
 									</div>
-									<!-- end blog-meta -->
 								</div>
-							</div>
 
-							<div class="media">
-								<img src="upload/blog_small_03.jpg" alt=""
-									class="img-responsive alignleft img-rounded">
-								<div class="media-body">
-									<h5 class="mt-0">
-										<a href="blog-single.html">Don't forget to update your
-											Google web master tools</a>
-									</h5>
-									<div class="blog-meta">
-										<ul class="list-inline">
-											<li>6 days ago</li>
-											<li><span>by</span> <a href="#">Martin</a></li>
-										</ul>
+								<div class="form-group">
+
+									<div class="col-xs-6">
+										<label for="phone"><h4>Major</h4></label> <input type="text"
+											class="form-control" name="major" id="major"
+											placeholder="enter major"
+											title="enter your major number if any." th:field="*{major}">
 									</div>
-									<!-- end blog-meta -->
 								</div>
+
+								<div class="form-group">
+									<div class="col-xs-6">
+										<label for="mobile"><h4>Academic Advior</h4></label> <input
+											type="text" class="form-control" name="academicAdvior"
+											id="academicAdvior" placeholder="enter academicAdvior"
+											title="enter your academicAdvior if any."
+											th:field="*{academicAdvior}">
+									</div>
+								</div>
+								<div class="form-group">
+
+									<div class="col-xs-6">
+										<label for="email"><h4>Email</h4></label> <input type="email"
+											class="form-control" name="email" id="email"
+											placeholder="you@email.com" title="enter your email."
+											th:field="*{email}">
+									</div>
+								</div>
+								<div class="form-group">
+
+									<div class="col-xs-6">
+										<label for="email"><h4>Description</h4></label>
+										<textarea class="form-control" id="description"
+											placeholder="description" title="enter a description"
+											th:field="*{description}"></textarea>
+									</div>
+								</div>
+
+
+								<hr>
+						
+						<div class="form-group">
+							<div class="col-xs-12">
+								<br>
+								<button class="btn btn-lg btn-success pull-right" type="submit">
+									<i class="glyphicon glyphicon-ok-sign"></i> Save
+								</button>
+								<button class="btn btn-lg" type="reset">
+									<i class="glyphicon glyphicon-repeat"></i> Reset
+								</button>
 							</div>
 						</div>
-						<!-- end post-widget -->
-					</div>
-					<!-- end widget -->
-
-					<div class="widget clearfix">
-						<h3 class="widget-title">Subscribe Our Newsletter</h3>
-						<div class="newsletter-widget">
-							<p>
-								You can opt out of our newsletters at any time. See our <a
-									href="#">privacy policy</a>.
-							</p>
-							<form class="form-inline" role="search">
-								<div class="form-1">
-									<input type="text" class="form-control"
-										placeholder="Enter email here..">
-									<button type="submit" class="btn btn-primary">
-										<i class="fa fa-paper-plane-o"></i>
-									</button>
-								</div>
-							</form>
+						</form>
 						</div>
-						<!-- end newsletter -->
 					</div>
-					<!-- end widget -->
 
-					<div class="widget clearfix">
-						<h3 class="widget-title">Popular Tags</h3>
-						<div class="tags-widget">
-							<ul class="list-inline">
-								<li><a href="#">course</a></li>
-								<li><a href="#">web design</a></li>
-								<li><a href="#">development</a></li>
-								<li><a href="#">language</a></li>
-								<li><a href="#">teacher</a></li>
-								<li><a href="#">speaking</a></li>
-								<li><a href="#">material</a></li>
-								<li><a href="#">css3</a></li>
-								<li><a href="#">html</a></li>
-								<li><a href="#">learning</a></li>
-							</ul>
-						</div>
-						<!-- end list-widget -->
-					</div>
-					<!-- end widget -->
 				</div>
-				<!-- end sidebar -->
+				<!--/tab-pane-->
+
 			</div>
-			<!-- end row -->
+			<!--/tab-content-->
+
+		</div>
+		<!--/col-9-->
+
 	</div>
-	<!-- end boxed -->
-	</div>
-	<!-- end container -->
-	</section>
+	<!--/row-->
 
 	<footer class="section footer noover" th:fragment="footer">
 		<div class="container">
@@ -514,18 +444,15 @@
 		<!-- end container -->
 	</div>
 	<!-- end copy -->
-	</div>
-	<!-- end wrapper -->
-
 	<!-- jQuery Files -->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
 		integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
 		crossorigin="anonymous"></script>
-	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-	<script src="js/animate.js"></script>
-	<script src="js/custom.js"></script>
+	<script src="/vendor/jquery/jquery-3.2.1.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+	<script src="/js/animate.js"></script>
+	<script src="/js/custom.js"></script>
 
 </body>
 </html>
