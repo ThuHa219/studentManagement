@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 @Entity(name = "course")
 public class Course {
@@ -19,10 +18,6 @@ public class Course {
 	private String reference;
 	@ManyToMany(mappedBy = "course")
 	private Set<User> users = new HashSet<>();
-	@OneToMany(mappedBy = "course")
-	private Set<File> filesTeacher = new HashSet<>();
-	@OneToMany(mappedBy = "course")
-	private Set<File> filesSubmission = new HashSet<>();
 	
 	public Course(long id, String name, String description, String reference, Set<User> users, Set<File> filesTeacher,
 			Set<File> filesSubmission) {
@@ -32,8 +27,11 @@ public class Course {
 		this.description = description;
 		this.reference = reference;
 		this.users = users;
-		this.filesTeacher = filesTeacher;
-		this.filesSubmission = filesSubmission;
+	}
+
+	public Course(String name) {
+		super();
+		this.name = name;
 	}
 
 	public Course() {
@@ -78,21 +76,5 @@ public class Course {
 
 	public void setUsers(Set<User> users) {
 		this.users = users;
-	}
-
-	public Set<File> getFilesTeacher() {
-		return filesTeacher;
-	}
-
-	public void setFilesTeacher(Set<File> filesTeacher) {
-		this.filesTeacher = filesTeacher;
-	}
-
-	public Set<File> getFilesSubmission() {
-		return filesSubmission;
-	}
-
-	public void setFilesSubmission(Set<File> filesSubmission) {
-		this.filesSubmission = filesSubmission;
 	}
 }

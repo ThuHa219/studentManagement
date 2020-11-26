@@ -10,4 +10,4 @@ import edu.hanu.studentManagement.model.Course;
 @Repository
 public interface CourseRepository extends JpaRepository<Course, Long>{
 	Optional<Course> findById(long id);
-}
+	}

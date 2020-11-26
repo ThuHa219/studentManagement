@@ -218,13 +218,14 @@
         <div class = "box-container">
             <div class = "box-material box">
                 <div class = "box-intro box">
-                    <h1>System And Design</h1>
-					<h5>Description:</h5> 
-					<input type="text" id="description" placeholder= "Type description for course...">
-					<a href = "#"><button type = "button">Add</button></a>
+                    <h1 th:text="${c.name}">System And Design</h1>
+					<h5>Description:</h5>
+					<form th:action="@{/updateCourse/{id}(id=${c.id})}" method="post" th:object="${course}">
+					<input type="text" id="description" placeholder= "Type description for course..." th:field="*{description}">
                     <h5>References:</h5>
-					<input type="text" id="references" placeholder= "Type references for course...">
-					<a href = "#"><button type = "button">Add</button></a>
+					<input type="text" id="references" placeholder= "Type references for course..." th:field="*{references}">
+					 <a href = "#"><button type = "submit">Add</button></a>
+                </form>
                 </div>
                 <div class = "box-submit box">
 					<h3>Submission Box</h3>
@@ -232,9 +233,12 @@
 					<h5>Create new Assigment</h5>
 					<a th:href="@{/file}"><i class="fas fa-plus-square"></i> Add</a>
 					<hr>
+					<th:block th:each="f : ${files}">
+					<a th:href=${f.url}><b th:text=${f.fileName}>File Name</b></a>
+					</th:block>
                 </div>
             </div>
-            <div class = "weekly-learn box">
+           <!--  <div class = "weekly-learn box">
 				<div>
 					<h5>New Week</h5>
 					<input type = "text" class = "title" placeholder="Type here (format: Week x: Title of lecture)"><br>
@@ -244,7 +248,7 @@
 				</div>
                 <hr>
                 
-            </div>
+            </div> -->
         </div> 
         <footer class="section footer noover" th:fragment="footer">
 			<div class="container">

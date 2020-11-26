@@ -20,9 +20,9 @@
 <meta name="author" content="">
 
 <!-- Site Icons -->
-<link rel="shortcut icon" href="/images/Hanu_logo.jpg"
+<link rel="shortcut icon" href="../images/Hanu_logo.jpg"
 	type="image/x-icon" />
-<link rel="apple-touch-icon" href="/images/Hanu_logo.jpg">
+<link rel="apple-touch-icon" href="../images/Hanu_logo.jpg">
 
 <!-- Google Fonts -->
 <link
@@ -33,12 +33,12 @@
 	rel="stylesheet">
 
 <!-- Custom & Default Styles -->
-<link rel="stylesheet" href="/vendor/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet"
 	href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="/css/carousel.css">
-<link rel="stylesheet" href="/css/animate.css">
-<link rel="stylesheet" href="/css/student-course.css">
+<link rel="stylesheet" href="../css/carousel.css">
+<link rel="stylesheet" href="../css/animate.css">
+<link rel="stylesheet" href="../css/list-course.css">
 
 </head>
 <body>
@@ -203,8 +203,8 @@
                                 <h3>Course</h3>
                                 <ul class="breadcrumb">
                                     <li><a href="javascript:void(0)">HANU</a></li>
-									<i class="fas fa-book" id = "icon-book"></i>
-									<p>Student</p>
+									<i class="fas fa-table" id = "icon-book"></i>
+									<p>List Of Course</p>
                                 </ul>
                             </div>
                         </div>
@@ -217,28 +217,14 @@
             <!-- end section -->
 
         <div class = "box-container">
-            <div class = "box-material box">
-                <div class = "box-intro box">
-                    <h1 th:text=${c.name}>System And Design</h1>
-                    <h5>Description:</h5> <p th:text=${c.description}>Systems design is the process of defining elements of a system like modules,
-                         architecture, components and their interfaces and data for a system based on 
-                         the specified requirements. ... Bottom-Up or Top-Down approach is required to
-                          take into account all related variables of the system.
-                    </p>
-                    <h5>References:</h5>
-                        <p th:text=${c.reference}></p>
+            <div class = "weekly-learn box">
+            <th:block th:each="c : ${courses}">
+                <div>
+                    <a th:href=@{/studentCourse/{id}(id=${c.id})}><b th:text="${c.name}">System And Analysis Design</b></a>
                 </div>
-                <div class = "box-submit box">
-                    <h3>Submission Box</h3>
-					<hr>
-					<h5>Create new Assigment</h5>
-					<a th:href="@{/file}"><i class="fas fa-plus-square"></i> Add</a>
-					<hr>
-					<th:block th:each="f : ${files}">
-					<a th:href=${f.url}><b th:text=${f.fileName}>File Name</b></a>
-					</th:block>
-                </div>
-            </div>
+                <!-- dot line -->
+                <hr>
+              </th:block>
         </div> 
         <footer class="section footer noover" th:fragment="footer">
 			<div class="container">

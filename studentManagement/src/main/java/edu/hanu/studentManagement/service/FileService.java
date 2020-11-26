@@ -1,6 +1,7 @@
 package edu.hanu.studentManagement.service;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,7 +26,9 @@ public class FileService {
 			// error
 		}
 		File dbFile = new File(fileName, file.getContentType(), file.getBytes(), userService.getUser());
-		return fileRepository.save(dbFile);
+		File fileTemp = fileRepository.save(dbFile);
+		fileTemp.setUrl("http://localhost:8080/downloadFile/" + fileTemp.getId());
+		return fileRepository.save(fileTemp);
 		} catch(IOException e) {
 			e.printStackTrace();
 			return null;
@@ -35,5 +38,9 @@ public class FileService {
 	public File getFile(int fileId) {
 		return fileRepository.findById(fileId)
 				.orElseThrow(() -> new IllegalArgumentException("error"));
+	}
+	
+	public List<File> getAll() {
+		return fileRepository.findAll();
 	}
 }

@@ -221,17 +221,17 @@
             <div th:if= "${not #lists.isEmpty(courses)}">
             <th:block th:each="c : ${courses}">
                 <div>
-                    <h4>System And Analysis Design</h4>
-                    <a href = "#"><i class="fas fa-trash-alt"></i>     Remove</a>
+                    <a th:text="${c.name}" th:href="@{/teacherCourse/{id}(id=${c.id})}"></a>
+                    <a th:href = "@{/deleteCourse/{id}(id=${c.id})}"><i class="fas fa-trash-alt"></i>     Remove</a>
                 </div>
 			</th:block>
 			</div>
                 <hr> 
                 <div >
                     <h4>Create new course</h4>
-                    <form action="#">
+                    <form th:action="@{/addCourse}" method="post" th:object="${course}">
                     <input type="text" id="message" autocomplete="off"
-                  placeholder="    Type name of course"/>
+                  placeholder="    Type name of course" name="message" th:field="*{name}"/>
                     <button type = "submit"><i class="fas fa-plus-square"></i>Add</button>
                     </form>
                 </div>

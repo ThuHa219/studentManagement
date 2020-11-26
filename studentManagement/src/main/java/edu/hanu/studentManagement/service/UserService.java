@@ -57,5 +57,11 @@ public class UserService {
 	public List<User> getAll() {
 		return userRepository.findAll();
 	}
+	
+	public User becomeTeacher() {
+		User user = getUser();
+		user.getAuthorities().add("TEACHER");
+		return userRepository.save(user);
+	}
 
 }

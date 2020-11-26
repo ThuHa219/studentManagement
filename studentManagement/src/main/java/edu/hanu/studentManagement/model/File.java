@@ -16,16 +16,12 @@ public class File {
 	private int id;
 	private String fileName;
 	private String fileType;
-	private String week;
+	private String url;
 	@Lob
 	private byte[] data;
 	@ManyToOne
 	@JoinColumn(name = "username", nullable = false)
 	private User users;
-	@ManyToOne
-	@JoinColumn(name = "course_id", nullable = false)
-	private Course course;
-	
 	public File(String fileName, String fileType, byte[] data, User users) {
 		super();
 		this.fileName = fileName;
@@ -78,19 +74,11 @@ public class File {
 		this.users = users;
 	}
 
-	public Course getCourse() {
-		return course;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
-	}
-
-	public String getWeek() {
-		return week;
-	}
-
-	public void setWeek(String week) {
-		this.week = week;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 }

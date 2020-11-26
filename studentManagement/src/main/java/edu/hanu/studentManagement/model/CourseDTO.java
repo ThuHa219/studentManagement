@@ -1,19 +1,14 @@
 package edu.hanu.studentManagement.model;
 
 public class CourseDTO {
+	private String name;
 	private String description;
 	private String references;
-	private File assigment;
-	private File lecture;
-	private File tutorial;
 	
-	public CourseDTO(String description, String references, File assigment, File lecture, File tutorial) {
+	public CourseDTO(String description, String references) {
 		super();
 		this.description = description;
 		this.references = references;
-		this.assigment = assigment;
-		this.lecture = lecture;
-		this.tutorial = tutorial;
 	}
 
 	public CourseDTO() {
@@ -35,28 +30,12 @@ public class CourseDTO {
 	public void setReferences(String references) {
 		this.references = references;
 	}
-
-	public File getAssigment() {
-		return assigment;
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setAssigment(File assigment) {
-		this.assigment = assigment;
-	}
-
-	public File getLecture() {
-		return lecture;
-	}
-
-	public void setLecture(File lecture) {
-		this.lecture = lecture;
-	}
-
-	public File getTutorial() {
-		return tutorial;
-	}
-
-	public void setTutorial(File tutorial) {
-		this.tutorial = tutorial;
+	public void setName(String name) {
+		this.name = name;
 	}
 }

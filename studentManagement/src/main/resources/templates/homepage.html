@@ -129,9 +129,12 @@
 						<li class="nav-item active"><a class="nav-link"
 							th:href="@{user/account}">Account</a></li>
 						<li class="nav-item active"><a class="nav-link"
-							th:href="@{teacher/course}">Teacher Course</a></li>
-						<li class="nav-item active"><a class="nav-link"
 							th:href="@{/chat}">Chat</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/manage/course}">manage course</a></li>
+						<li class="nav-item active"><a class="nav-link"
+							th:href="@{/listCourse}">student course</a></li>
+							
 						<li class="dropdown yamm-fw yamm-half"><a href="#"
 							data-toggle="dropdown" class="dropdown-toggle active">Mega
 								Menu <b class="fa fa-angle-down"></b>
@@ -439,7 +442,7 @@
 						<h3 class="widget-title">Join us today</h3>
 						<p>Would you like to earn your profits by joining our team?
 							Join us without losing time.</p>
-						<a href="#" class="readmore">Became a Teacher</a>
+						<a th:href="@{/becomeTeacher}" class="readmore">Became a Teacher</a>
 					</div>
 					<!-- end widget -->
 				</div>
