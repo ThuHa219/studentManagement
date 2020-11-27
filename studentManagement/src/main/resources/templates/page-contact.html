@@ -4,7 +4,7 @@
 <html class="no-js " lang="en">
 <!--<![endif]-->
 <head>
-
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <!-- Basic -->
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -84,7 +84,8 @@
 								<strong><i class="fa fa-phone"></i></strong> +90 543 123 45 67
 								&nbsp;&nbsp; <strong><i class="fa fa-envelope"></i></strong> <a
 									href="mailto:#">info@yoursite.com</a>
-							</p>
+                            </p>
+                            <a href = "#" th:href="@{/chat}"><i class="far fa-comments icon" >Chat room</i></a>
 						</div>
 						<div class="col-md-6 col-sm-6 hidden-xs text-right">
 							<div class="social">
@@ -99,16 +100,33 @@
 									data-placement="bottom" title="Linkedin"><i
 									class="fa fa-linkedin"></i></a> <a class="pinterest" href="#"
 									data-tooltip="tooltip" data-placement="bottom"
-									title="Pinterest"><i class="fa fa-pinterest"></i></a>
-							</div>
-						</div>
+                                    title="Pinterest"><i class="fa fa-pinterest"></i>
+                                </a>
+                            </div>
+                                <!-- <a href = "#"><i class="fas fa-user-graduate icon">1701040163</i></a> -->
+                                <li class="dropdown yamm-fw  profile"><a href = "#"><i class="fas fa-user-graduate icon">1701040163</i></a>
+                                    <ul class="dropdown-menu menu">
+                                        <li>
+                                            <h5>Vu Van Tung</h5>
+                                            <ul class = "com">
+                                            <li><a href="#" th:href="@{user/account}">Profile</a></li>
+                                            <li><a href="#">Change password</a></li>
+                                            <li><a href="#"th:href="@{/logout}">Logout</a></li>
+                                            </ul>
+                                              
+                                        </li>
+                                    </ul></li>
+                                </a>
+                               </div>
+						    </div>
+                        </div>
 					</div>
 				</div>
 			</div>
 			<!-- end topbar -->
 
 			<nav class="navbar navbar-expand-xl navbar-light bg-light">
-				<a class="navbar-brand" href="#"><img src="images/Hanu_logo.jpg"
+				<a class="navbar-brand" href="#"><img src="../images/Hanu_logo.jpg"
 					alt="" width="60" height="60"></a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#navbarTogglerDemo02"
@@ -119,12 +137,11 @@
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active"><a class="nav-link"
+						<li class="nav-item active"><a href="#" class="nav-link"
 							th:href="@{/home}">Home <span class="sr-only">(current)</span>
 						</a></li>
-						<li class="nav-item"><a class="nav-link" th:href="@{/news}">New</a></li>
-						<li class="nav-item"><a class="nav-link"
-							th:href="@{/contact}">Contact</a></li>
+						<li class="nav-item"><a href="#" class="nav-link" th:href="@{/news}">New</a></li>
+						<li class="nav-item"><a  href="#" class="nav-link" th:href="@{/contact}">Contact</a></li>
 						<li class="dropdown yamm-fw yamm-half"><a href="#"
 							data-toggle="dropdown" class="dropdown-toggle active">Mega
 								Menu <b class="fa fa-angle-down"></b>
@@ -178,25 +195,27 @@
 				</div>
 			</nav>
 		</header>
-		<section class="section db p120">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="tagline-message page-title text-center">
-							<h3>Get In Touch</h3>
-							<ul class="breadcrumb">
-								<li><a href="javascript:void(0)">HANU</a></li>
-								<li class="active">Get in touch</li>
-							</ul>
-						</div>
-					</div>
-					<!-- end col -->
-				</div>
-				<!-- end row -->
-			</div>
-			<!-- end container -->
-		</section>
-		<!-- end section -->
+            <section class="section db p120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="tagline-message page-title text-center">
+                                <h3>Get In Touch</h3>
+                                <ul class="breadcrumb">
+                                    <li><a href="javascript:void(0)">HANU</a></li>
+									<i i class="fas fa-id-card-alt" id = "icon-book"></i>
+									<p>Contact</p>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- end col -->
+                    </div>
+                    <!-- end row -->
+                </div>
+                <!-- end container -->
+            </section>
+            <!-- end section -->
+		
 
 		<section class="section gb nopadtop">
 			<div class="container">
@@ -374,14 +393,14 @@
 				<div class="clearfix">
 					<div class="pull-left">
 						<div class="cop-logo">
-							<a href="#"><img src="images/logo.png" alt=""></a>
+							
 						</div>
 					</div>
 
 					<div class="pull-right">
 						<div class="footer-links">
 							<ul class="list-inline">
-								<li>Design : <a href="https://html.design">HTML.Design</a></li>
+								<li>Design : TungVu</li>
 							</ul>
 						</div>
 					</div>
