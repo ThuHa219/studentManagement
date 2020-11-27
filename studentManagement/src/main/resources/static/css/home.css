@@ -154,7 +154,7 @@ a {
     padding-left: 0
 }
 
-.check li a {}
+/* .check li a {} */
 
 .authorbox,
 blockquote {
@@ -231,7 +231,9 @@ HEADER
     -o-transition: all .3s ease-in-out;
     transition: all .3s ease-in-out;
 }
-
+.row-fluid {
+    display: flex;
+}
 .header.without-topbar {
     padding: 30px 0;
 }
@@ -272,7 +274,9 @@ HEADER
     background: none;
     border: 0;
 }
-
+/* #navbarTogglerDemo02{
+    display: flex;
+} */
 .navbar-default .nav>li>a {
     color: #fff !important;
     text-transform: capitalize;
@@ -440,7 +444,7 @@ MEGA MENU
     position: relative;
 }
 
-.yamm .dropdown.yamm-fw .dropdown-menu {}
+/* .yamm .dropdown.yamm-fw .dropdown-menu {} */
 
 .yamm .dropdown {
     position: relative;
@@ -451,7 +455,16 @@ MEGA MENU
     left: auto;
     right: auto;
 }
-
+.dropdown-toggle-active{
+    padding-left:100px;
+    
+}
+#navbar {
+    display: flex;
+}
+#navbar p{
+    padding-top:9px;
+}
 .yamm h4 {
     font-size: 16px;
     padding-top: 0;
@@ -947,7 +960,7 @@ SECTIONS
     overflow: hidden;
     position: relative;
     background-position: top center;
-    vertical-align: sub;
+    /* vertical-align: sub; */
     width: 100%;
     z-index: 2;
 }
@@ -2049,7 +2062,7 @@ MICS
 .loader {
     display: block;
     margin: 20px auto 0;
-    vertical-align: middle;
+    /* vertical-align: middle; */
 }
 
 #preloader {
@@ -2081,7 +2094,9 @@ MICS
     -o-border-radius: 50%;
     border-radius: 50%
 }
-
+#icon-book{
+    color: rgb(248, 241, 241);
+}
 
 /******************************************
 COLOR BLUE
@@ -2163,8 +2178,9 @@ mark,
     box-shadow: inset 0 100px 0 0 #00a8bd;
     border-color: #00a8bd;
 }
-
-
+#icon-book{
+    font-size:50px;
+}
 /******************************************
 COLOR GREEN
 ******************************************/
@@ -2305,4 +2321,106 @@ RESPONSIVE
     .nav>li>a {
         padding: 1em 0.7em;
     }
+}
+.icon{
+    font-size:20px;
+    padding-top:10px;
+}
+.dropdown {
+    padding-top:8px;
+    margin-left:8px;
+}
+.btn {
+    background-color: darkturquoise;
+}
+.box{
+    background-color: rgb(237, 237, 237);
+    /* width: 300px; */
+    height: 100%;
+    padding: 20px;
+    margin: 10px;
+    
+}
+.box-material{
+    display: flex;
+}
+
+.box-intro,.box-submit{
+    
+    width: 100%;
+    margin:0 auto;
+    height:400px;
+    border: 4px solid rgb(55, 65, 55);
+    border-radius: 10px;
+}
+.box-container h1{
+    padding-left:10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.weekly-learn {
+    padding: 20px;
+    margin: 10px;
+    box-shadow: 6px 11px #888888;
+    border-radius: 10px;
+    border: 4px solid rgb(55, 65, 55);
+    height: 100%;
+}
+.box p a {
+    padding-left:10px;
+}
+hr {
+    border-top: 1px dashed rgb(62, 183, 187);
+}
+.weekly-learn a {
+    margin-left: 70px;
+}
+.fa-file-word {
+    margin-left:200px;
+}
+.fa-file-upload {
+    margin-left: 200px;
+}
+.box-submit h5{
+    padding-top:30px;
+}
+.box .fas {
+    color:#f4af0b;
+}
+.profile{
+    display: inline-block;
+}
+.com li a{
+    font-size: 120% ;
+    margin:0 auto;
+    padding:0;
+    color: black;
+}
+.com li a:hover{
+    color: rgb(42, 199, 76);
+}
+.menu {
+    margin:0 auto;
+    padding:0;
+}
+.menu h5 ,a {
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.menu h5 {
+    padding-left:25px;
+    padding-top: 10px;
+}
+footer{
+    margin-top:50px;
+}
+.breadcrumb p {
+    font-size: 120%;
+    color: white;
+    margin-top: 10px;
+}
+.menu ul{
+    padding-bottom: 15px;
+}
+.dropdown p{
+    margin-left:-100%;
+    margin-top:-8px;
 }
