@@ -45,6 +45,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	                "/updatePassword").permitAll()
 			// here goes the path that you want to secure
 			.antMatchers("/api/**").hasAuthority("USER")
+			.antMatchers("/home").hasAuthority("TEACHER")
+			.antMatchers("/student/home").hasAnyAuthority("USER", "TEACHER")
 			/////
 			.anyRequest().authenticated()
 			.and()
@@ -54,6 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("username")
 				.passwordParameter("password")
 				.defaultSuccessUrl("/home")
+				.defaultSuccessUrl("/student/home")
 				.failureUrl("/login?error=true")
 			.and()
 			.logout()

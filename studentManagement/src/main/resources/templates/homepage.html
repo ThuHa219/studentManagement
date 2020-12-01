@@ -109,9 +109,9 @@
                                         <li>
                                             <h5>Vu Van Tung</h5>
                                             <ul class = "com">
-                                            <li><a href="#" th:href="@{user/account}">Profile</a></li>
-                                            <li><a href="#">Change password</a></li>
-                                            <li><a href="#"th:href="@{/logout}">Logout</a></li>
+                                            <li><a th:href="@{/user/account}">Profile</a></li>
+                                            <li><a th:href="@{/forgotPassword}">Change password</a></li>
+                                            <li><a th:href="@{/logout}">Logout</a></li>
                                             </ul>
                                               
                                         </li>
@@ -538,7 +538,7 @@
 							<h3 class="widget-title">Join us today</h3>
 							<p>Would you like to earn your profits by joining our team?
 								Join us without losing time.</p>
-							<a href="#" class="readmore">Became a Teacher</a>
+							<a th:href="@{/becomeTeacher}" class="readmore">Became a Teacher</a>
 						</div>
 						<!-- end widget -->
 					</div>

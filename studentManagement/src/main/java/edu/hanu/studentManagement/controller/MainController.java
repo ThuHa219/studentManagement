@@ -1,6 +1,7 @@
 package edu.hanu.studentManagement.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,16 @@ public class MainController {
 	@RequestMapping("/becomeTeacher")
 	public String becomeTeacher() {
 		userService.becomeTeacher();
+		String authorities = userService.getUser().getAuthorities().stream().findFirst().get();
+		if(authorities.equals("TEACHER")) { 
 		return "redirect:/home";
+		} else {
+		return "redirect:/student/home";
+		}
+	}
+	
+	@RequestMapping("/student/home")
+	public String studentHome() {
+		return "homepagestudent";
 	}
 }

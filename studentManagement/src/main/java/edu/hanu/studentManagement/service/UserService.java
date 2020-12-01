@@ -1,7 +1,9 @@
 package edu.hanu.studentManagement.service;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -60,7 +62,9 @@ public class UserService {
 	
 	public User becomeTeacher() {
 		User user = getUser();
-		user.getAuthorities().add("TEACHER");
+		Set<String> authorities = new HashSet<>();
+		authorities.add("TEACHER");
+		user.setAuthorities(authorities);
 		return userRepository.save(user);
 	}
 
